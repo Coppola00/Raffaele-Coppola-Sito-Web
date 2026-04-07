@@ -1,0 +1,478 @@
+/* 1. Regole generali che valgono per tutto il sito
+      ============================================= */
+
+/* Resetta i margini predefiniti del browser per avere il pieno controllo */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Stile globale della pagina */
+body {
+  background-image: url("images/background-pixel.png");
+  background-size: cover;
+  background-position: center;   
+  background-attachment: fixed; /* Mantiene lo sfondo fermo mentre scorri */
+  background-repeat: no-repeat;  
+  font-family: 'Press Start 2P', cursive; 
+  text-align: center;
+  padding: 20px;
+}
+
+/* 2. Struttura della pagina
+      ======================= */
+header {
+  width: 100%;
+  height: 60vh; 
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px
+ }
+ 
+footer {
+  background-color: #000000; 
+  color: #ffffff; 
+  text-align: center; 
+  padding: 10px 20px; 
+  font-size: 0.9rem;  
+  width: 100%; 
+  box-sizing: border-box; 
+} 
+/* Barra delle statistiche in alto HUD */
+.barra-hud {
+    position: absolute; 
+    top: 20px; 
+    left: 0;
+    width: 100%;     
+    padding: 0 40px; 
+    box-sizing: border-box; 
+    display: flex;
+    justify-content: space-between; /* Spinge gli elementi ai lati opposti */
+    align-items: center; 
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000; 
+}
+.item { flex: 1; }
+.hud-sinistra { text-align: left; }
+.hud-centro { text-align: center; }
+.hud-destra { text-align: right; }
+
+.titolo-principale {
+    margin-top: 60px; 
+    text-align: center;
+    z-index: 10;
+    font-size: 3.5rem; 
+    color: #FFCC00; 
+    line-height: 1.3; 
+    margin: 0;
+    /* Crea un bordo nero con le ombre */
+    text-shadow: 
+        -2px -2px 0 #000000,  
+         2px -2px 0 #000000,
+        -2px  2px 0 #000000,
+         2px  2px 0 #000000,
+         6px  6px 0 #000000;
+}
+
+.menu {
+  margin-top: 40px; 
+  z-index: 10; 
+  display: flex;
+  justify-content: center;
+  gap: 50px; 
+  flex-wrap: wrap; /* Manda a capo i bottoni se lo schermo si restringe */
+}
+
+.pulsante {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.9);
+  border: 4px double #ffffff;
+  padding: 15px 30px;
+  width: 300px;
+  transition: all 0.2s;
+  box-shadow: 6px 6px black;
+  text-decoration: none;
+  color: #facc15;
+  font-size: 13px;
+  margin: 0;
+  text-shadow: 2px 2px 0px #000000;
+}
+
+.pulsante:hover {
+  transform: scale(1.1); 
+  background-color: #000000; 
+}
+
+.pagina-corrente {
+    position: relative;
+    border-color: #FFCC00 !important;
+}
+    
+.pagina-corrente h2 { color: #FFCC00 !important; }
+
+/* Aggiunge la freccina animata prima del nome del bottone */
+.pagina-corrente::before {
+    content: "►"; 
+    position: absolute;
+    left: -40px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    font-size: 2.5rem;
+    color: #FFCC00;
+    text-shadow: 2px 2px 0px #000000;   
+    animation: lampeggia 1s infinite;
+}
+
+@keyframes lampeggia {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* 3. Stile pagina home
+      ================== */
+      
+.home-main {
+    max-width: 800px;
+    margin: 0 auto; 
+    padding: 0px 20px 120px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 50px;
+}
+
+.intro-personaggio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+    
+.personaggio {
+    width: 350px; 
+    height: auto; 
+    margin-top: -195px; 
+    z-index: 5;  
+}
+
+.cit-personaggio {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000; 
+    margin-top: -20px;
+}
+    
+.box-home {
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 4px double #ffffff; 
+    padding: 20px 0px;
+    margin-bottom: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    line-height: 1.6;
+    text-align: center;
+    box-shadow: 5px 5px 0px #000000;
+}    
+
+.home-main h2{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 30px;
+    color: #FFCC00; 
+    line-height: 1.3; 
+    margin: 0;
+    text-shadow: 
+        -2px -2px 0 #000000,  
+         2px -2px 0 #000000,
+        -2px  2px 0 #000000,
+         2px  2px 0 #000000,
+         6px  6px 0 #000000;
+}
+
+/* Struttura della singola barra abilità */
+.stat-row {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 25px;
+    padding: 0px 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.stat-name {
+    color: #ffffff;
+    font-size: 1.5rem;
+    width: 100px; 
+    text-shadow: 2px 2px 0px #000000;
+}
+
+.barra-vuota {
+    flex-grow: 1; 
+    height: 30px;
+    background-color: #333333; /* Colore grigio scuro che indica la barra vuota */
+    border: 3px solid #000000;
+    margin: 0 20px; 
+}  
+
+.barra-piena {
+    height: 100%; 
+    box-shadow: inset 0px -6px 0px rgba(0, 0, 0, 0.3); /* Effetto profondità 3D sulla barra */
+}
+
+/* Colori specifici dei linguaggi */
+.riempimento-java { background-color: #f89820; width: 80%; }
+.riempimento-csharp { background-color: #68217a; width: 70%; }
+.riempimento-python { background-color: #3776ab; width: 50%; }
+.riempimento-sql { background-color: #00758f; width: 70%; }
+.riempimento-html { background-color: #E34F26; width: 60%; }
+.riempimento-css { background-color: #264DE4; width: 60%; }
+
+.stat-value {
+    color: #FFCC00;
+    font-size: 1.5rem;
+    width: 80px;
+    text-align: right;
+    text-shadow: 2px 2px 0px #000000;
+}
+
+/* 4. Stile pagina chi sono
+      ====================== */
+      
+.timeline-section {
+    margin: 40px auto;
+    padding: 0 20px;
+    max-width: 800px;
+    margin-bottom: 120px; 
+}
+
+.titolo-timeline {
+    color: #FFCC00;
+    text-shadow: 2px 2px 0px #000000;
+    margin-bottom: 40px;
+    font-size: 1.5rem;
+}
+
+/* La linea centrale gialla */
+.timeline {
+    position: relative;
+    padding-left: 40px; 
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 14px; 
+    width: 6px;
+    background-color: #FFCC00;
+    border: 2px solid #000000; 
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Il quadratino segna-tappa */
+.timeline-dot {
+    position: absolute;
+    top: 15px;
+    left: -40px; 
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border: 4px solid #000000;
+    box-shadow: 2px 2px 0px #FFCC00;
+    z-index: 1;
+}
+
+/* La scheda testuale della tappa */
+.timeline-content {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 4px solid #ffffff;
+    padding: 20px;
+    box-shadow: 6px 6px 0px #000000;
+    text-align: left;
+    transition: transform 0.2s; 
+}
+
+.timeline-content:hover {
+    transform: translateX(10px); /* Sposta il blocco leggermente a destra al passaggio del mouse */
+    border-color: #FFCC00;
+}
+
+.timeline-content h3 {
+    font-family: 'Press Start 2P', cursive;
+    color: #FFCC00;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.timeline-content p {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}      
+
+
+/* 5. Stile pagina contatti
+      ====================== */
+      
+.contatti-section {
+    margin-top: 40px; 
+    margin-bottom: 120px;
+}   
+
+/* Contenitore a griglia per i canali social/email */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Carta interattiva per ogni contatto */
+.contact-card {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 4px solid #ffffff;
+    width: 250px;
+    padding: 30px 20px;
+    text-decoration: none; 
+    box-shadow: 6px 6px 0px #000000;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-card:hover {
+    border-color: #FFCC00;
+    transform: translateY(-8px); /* Effetto sollevamento */
+    box-shadow: 6px 14px 0px #000000;
+}
+
+.contact-card:active {
+    transform: translate(4px, 4px); /* Effetto click "schiacciato" */
+    box-shadow: 0px 0px 0px #000000;
+}
+
+.contact-card .icona {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    font-family: 'Press Start 2P', cursive;
+    color: #FFCC00;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.contact-card p {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    font-size: 1rem;
+    word-break: break-all; /* Impedisce alle email lunghe di sbordare */
+}
+
+
+/* 6. Responsitive per Tablet e Smartphone
+      ===================================== */
+
+@media screen and (max-width: 1024px) {
+    .contatti-section {
+        margin-top: -100px;
+        margin-bottom: 130px;
+    } 
+    .titolo-principale {
+        font-size: 2.2rem;
+        margin-top: 50px;
+    }
+    .barra-hud {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+    .quest-form {
+        width: 90%;
+    }
+}
+
+
+
+
+@media screen and (max-width: 480px) {
+    header {
+        height: auto;
+        min-height: 60vh;
+        padding-bottom: 40px;
+    }
+    body {
+        background-attachment: scroll; 
+        background-position: top center; 
+    }
+    .menu {
+    flex-direction: column;
+    align-items: center;
+   }
+    .barra-hud {
+        flex-direction: column;
+        gap: 5px; 
+        font-size: 0.9rem; 
+        padding: 10px;
+    }
+    .titolo-principale {
+        font-size: 1.5rem;
+        margin-top: 130px; 
+    }
+    .home-main, .game-main {
+        padding: 20px 10px 80px 10px; 
+    }
+    .personaggio {
+        width: 100%; 
+        max-width: 300px; 
+        margin-top: 20px;
+    }
+    .cit-personaggio {
+        font-size: 1rem;
+    }
+    .pulsante {
+        padding: 10px 15px;
+        width: 95%; 
+    }
+    .card h2 {
+        font-size: 1.2rem;
+    }
+    .pagina-corrente::before {
+        left: -20px;
+        font-size: 1.5rem;
+    }
+    .home-main h2{
+        font-size: 25px;
+    }
+    .stat-name {
+        font-size: 1rem;
+        width: 70px;
+    }
+    .stat-value {
+        font-size: 1rem;
+        width: 60px;
+    }
+    .barra-vuota {
+        margin: 0 10px; 
+    }  
+}    
