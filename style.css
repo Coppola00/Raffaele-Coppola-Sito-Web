@@ -475,4 +475,7 @@ footer {
     .barra-vuota {
         margin: 0 10px; 
     }  
+    .contatti-section {
+        margin-top: 40px;
+    }  
 }    
